@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: url("{% static 'assets/img/img_2.png' %}") no-repeat center center fixed; /* Background image */
+            background-size: cover; /* Cover the viewport */
+        }
+
+        .user_card {
+            height: 450px;
+            width: 350px;
+            margin-top: auto;
+            margin-bottom: auto;
+            background: rgba(0, 123, 255, 0.3); /* Semi-transparent blue */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 10px;
+        }
+
+        .brand_logo_container {
+            position: absolute;
+            height: 120px;
+            width: 120px;
+            top: -60px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 4px solid #007bff;
+            text-align: center;
+        }
+
+        .brand_logo {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        .form_container {
+            margin-top: 10px;
+        }
+
+        .register_btn {
+            width: 100%;
+            background: #007bff !important;
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .register_btn:hover {
+            background: #0056b3 !important;
+        }
+
+        .links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+     {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li class="alert alert-{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+</head>
+<body>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-center">
+                    <div class="brand_logo_container">
+                        <img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png"
+                             class="brand_logo" alt="Logo">
+                    </div>
+                </div>
+                 <div class="d-flex justify-content-center mt-4">
+                   <h3 class="text-center text-white">Create an Account</h3>
+                </div>
+                <div class="d-flex justify-content-center form_container">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" id="full_name" name="full_name" class="form-control" placeholder="Enter your Fullname" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn register_btn">Register</button>
+                        </div>
+                    </form>
+                    {% if messages %}
+    <div class="alert-container">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+                    {% endif %}
+
+                </div>
+                <div class="mt-4">
+                    <div class="d-flex justify-content-center links">
+                        Already have an account? <a href="{% url 'login' %}" class="ml-2">Login here</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
