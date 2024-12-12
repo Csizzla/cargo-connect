@@ -133,7 +133,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="{% url 'services' %}">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -144,7 +144,7 @@
             <div class="user_card">
                 <div class="d-flex justify-content-center">
                     <div class="brand_logo_container">
-                        <img src="{% static 'assets/img/logo/img.png' %})"
+                        <img src="{% static 'assets/img/logo.png' %})"
                              class="brand_logo" alt="Logo">
                     </div>
                 </div>

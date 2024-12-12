@@ -55,7 +55,7 @@
 
   <!-- Dashboard Content -->
   <div >
-    <h1 class="text-primary text-center mb-4">Welcome Back, {{ request.user.username }}!</h1>
+    <h1 class="text-primary text-center mb-4">Welcome Back, {{ request.member.full_name }}!</h1>
 
     <!-- Quick Stats -->
     <div class="row mb-4">
@@ -119,19 +119,27 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>#</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th>Order Date</th>
+          <th>Order ID</th>
+            <th>Departure City</th>
+            <th>Delivery City</th>
+            <th>Weight</th>
+            <th>Dimensions</th>
+            <th>Driver</th>
+            <th>Price</th>
+            <th>Status</th>
         </tr>
       </thead>
       <tbody>
         {% for order in orders %}
         <tr>
-          <td>{{ order.id }}</td>
-          <td>{{ order.description }}</td>
-          <td>{{ order.status }}</td>
-          <td>{{ order.order_date }}</td>
+         <td>{{ order.id }}</td>
+            <td>{{ order.departure_city }}</td>
+            <td>{{ order.delivery_city }}</td>
+            <td>{{ order.weight }}</td>
+            <td>{{ order.dimensions }}</td>
+            <td>{{ order.driver|default:"N/A" }}</td>
+            <td>{{ order.price|default:"N/A" }}</td>
+            <td>{{ order.status }}</td>
         </tr>
         {% empty %}
         <tr>

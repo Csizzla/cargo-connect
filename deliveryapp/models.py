@@ -2,27 +2,14 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 
 # Create your models here.
-class User(models.Model):
+class Member(models.Model):
     full_name = models.CharField(max_length=50)
-    Username = models.CharField(max_length=50)
-    email = models.EmailField()
-    password = models.CharField(max_length=20)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=255)  # Store hashed passwords
 
     def __str__(self):
-        return self.Username
-    
-class Quote(models.Model):
-    departure_city = models.CharField(max_length=50)
-    delivery_city = models.CharField(max_length=50)
-    weight = models.FloatField()
-    dimensions =models.FloatField()
-    name = models.CharField(max_length=50)
-    email = models.EmailField()
-    phone = models.CharField(max_length=20)
-    message = models.TextField()
+        return self.full_name
 
-    def __str__(self):
-        return self.name
 
 class Contact(models.Model):
     name = models.CharField(max_length=50)
@@ -33,27 +20,36 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
 
-class Member(models.Model):
-    full_name = models.CharField(max_length=50)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=255)  # Store hashed passwords
 
-    def __str__(self):
-        return self.full_name
 
 class Order(models.Model):
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="orders")  # Link to the user
-    order_date = models.DateTimeField(auto_now_add=True)  # Automatically add the timestamp
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    phone = models.CharField(max_length=50)
+    message = models.TextField()
+    members = models.OneToOneField(Member, on_delete=models.CASCADE, related_name="order", null=True, blank=True)  # Link to the Quote
+    departure_city = models.CharField(max_length=100)
+    delivery_city = models.CharField(max_length=100)
+    weight = models.FloatField()
+    dimensions = models.CharField(max_length=100)
+    driver = models.CharField(max_length=100, null=True, blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     status = models.CharField(
-        max_length=50,
-        choices=[
-            ('Pending', 'Pending'),
-            ('Processing', 'Processing'),
-            ('Completed', 'Completed'),
-        ],
-        default='Pending',
+        max_length=20,
+        choices=[("Pending", "Pending"), ("Completed", "Completed"), ("Canceled", "Canceled")],
+        default="Pending",
     )
-    description = models.TextField()  # Description of the order
+
+    # Metadata
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"Order #{self.id} - {self.customer.email}"
+        return self.name
+
+class Feedback(models.Model):
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.created_at
