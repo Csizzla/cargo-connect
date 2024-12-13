@@ -4,14 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Services - Logis Bootstrap Template</title>
+  <title>Services </title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
     {% load static %}
 
   <!-- Favicons -->
-  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/logo/2081736.png' %}" rel="icon">
   <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -47,27 +47,28 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Logis</h1>
+        <h1 class="sitename">Cargo Connect</h1>
       </a>
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="{% url 'index' %}">Home<br></a></li>
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'services' %}" class="active">Services</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="#" ><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li><a href="{% url 'quote' %}">Get a quote</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
+              <li><a href="{% url 'quote' %}">Place Order</a></li>
+              <li><a href="{% url 'account' %}">Dashboard</a></li>
+              <li><a href="#">Track</a></li>
+              <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
           </li>
-          <li><a href="{% url 'contact' %}">Contact</a></li>
+
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+
       </nav>
 
-      <a class="btn-getstarted" href="#">LOG IN</a>
+      <a class="btn-getstarted" href="{% url 'quote' %}">Place Order</a>
 
     </div>
   </header>
@@ -78,7 +79,7 @@
     <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/page-title-bg.jpg);">
       <div class="container position-relative">
         <h1>Services</h1>
-        <p>Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam molestias.</p>
+        <p>Explore the range of delivery services we offer to meet your unique needs. From parcel deliveries to bulk logistics, we provide reliable and efficient solutions designed to make your life easier.</p>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
@@ -133,11 +134,12 @@
     <section id="services" class="services section">
 
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
+        <div class="container section-title" data-aos="fade-up">
         <span>Our Services<br></span>
         <h2>Our ServiceS</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+        <p>Explore the range of delivery services we offer to meet your unique needs. From parcel deliveries to bulk logistics, we provide reliable and efficient solutions designed to make your life easier.</p>
+      </div>
+     <!-- End Section Title -->
 
       <div class="container">
 
@@ -149,7 +151,7 @@
                 <img src="{% static 'assets/img/service-1.jpg' %}" alt="" class="img-fluid">
               </div>
               <h3>Storage</h3>
-              <p>Cumque eos in qui numquam. Aut aspernatur perferendis sed atque quia voluptas quisquam repellendus temporibus itaqueofficiis odit</p>
+              <p>Secure storage solutions for your packages, ensuring safety before and during delivery. Our state-of-the-art warehousing services provide peace of mind for your goods.</p>
             </div>
           </div><!-- End Card Item -->
 
@@ -159,7 +161,7 @@
                 <img src="{% static 'assets/img/service-2.jpg' %}" alt="" class="img-fluid">
               </div>
               <h3><a href="#" class="stretched-link">Logistics</a></h3>
-              <p>Asperiores provident dolor accusamus pariatur dolore nam id audantium ut et iure incidunt molestiae dolor ipsam ducimus occaecati nisi</p>
+              <p>Comprehensive logistics services tailored for businesses, including regular delivery schedules and bulk shipping. We work with you to optimize your supply chain and improve delivery efficiency.</p>
             </div>
           </div><!-- End Card Item -->
 
@@ -169,7 +171,7 @@
                 <img src="{% static 'assets/img/service-3.jpg' %}" alt="" class="img-fluid">
               </div>
               <h3><a href="#" class="stretched-link">Cargo</a></h3>
-              <p>Dicta quam similique quia architecto eos nisi aut ratione aut ipsum reiciendis sit doloremque oluptatem aut et molestiae ut et nihil</p>
+              <p>Efficient delivery solutions for small and large parcels, with options for express or standard shipping to suit your needs. Your packages will be safely and promptly delivered.</p>
             </div>
           </div><!-- End Card Item -->
 
@@ -179,7 +181,7 @@
                 <img src="{% static 'assets/img/service-4.jpg' %}" alt="" class="img-fluid">
               </div>
               <h3><a href="#" class="stretched-link">Trucking</a></h3>
-              <p>Dicta quam similique quia architecto eos nisi aut ratione aut ipsum reiciendis sit doloremque oluptatem aut et molestiae ut et nihil</p>
+              <p>Dedicated trucking services for transporting large shipments with reliability and care. We ensure that your freight arrives at its destination safely, whether locally or across long distances.</p>
             </div>
           </div><!-- End Card Item -->
 
@@ -189,7 +191,7 @@
                 <img src="{% static 'assets/img/service-5.jpg' %}" alt="" class="img-fluid">
               </div>
               <h3>Packaging</h3>
-              <p>Illo consequuntur quisquam delectus praesentium modi dignissimos facere vel cum onsequuntur maiores beatae consequatur magni voluptates</p>
+              <p> High-quality packaging solutions to ensure the safety and security of your goods during transit. We use durable materials to minimize damage and maximize customer satisfaction.</p>
             </div>
           </div><!-- End Card Item -->
 
@@ -199,7 +201,7 @@
                 <img src="{% static 'assets/img/service-6.jpg' %}" alt="" class="img-fluid">
               </div>
               <h3><a href="#" class="stretched-link">Warehousing</a></h3>
-              <p>Quas assumenda non occaecati molestiae. In aut earum sed natus eatae in vero. Ab modi quisquam aut nostrum unde et qui est non quo nulla</p>
+              <p>Secure and climate-controlled warehousing solutions for storing your packages before delivery. Our facilities ensure that your goods remain safe, organized, and accessible.</p>
             </div>
           </div><!-- End Card Item -->
 
@@ -207,7 +209,7 @@
 
       </div>
 
-    </section><!-- /Services Section -->
+    </section>
 
     <!-- Features Section -->
     <section id="features" class="features section">
@@ -488,9 +490,9 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Logis</span>
+            <span class="sitename">Cargo Connect</span>
           </a>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+          <p>Connect with us Online:</p>
           <div class="social-links d-flex mt-4">
             <a href=""><i class="bi bi-twitter-x"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
@@ -502,9 +504,9 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About us</a></li>
+            <li><a href="{% url 'services' %}">Services</a></li>
             <li><a href="#">Terms of service</a></li>
             <li><a href="#">Privacy policy</a></li>
           </ul>
@@ -513,35 +515,26 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Our Services</h4>
           <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
+            <li><a href="#">Storage</a></li>
+            <li><a href="#">Logistics</a></li>
+            <li><a href="#">Packaging</a></li>
           </ul>
         </div>
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Us</h4>
           <p>A108 Adam Street</p>
-          <p>New York, NY 535022</p>
-          <p>United States</p>
-          <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-          <p><strong>Email:</strong> <span>info@example.com</span></p>
+          <p>Nairobi, N  5022</p>
+          <p>Kenya</p>
+          <p class="mt-4"><strong>Phone:</strong> <span>+254 746327876 </span></p>
+          <p><strong>Email:</strong> <span>cargodeliveries@.com</span></p>
         </div>
 
       </div>
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Logis</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Cargo Connect</strong> <span>All Rights Reserved</span></p>
     </div>
 
   </footer>

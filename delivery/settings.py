@@ -138,6 +138,4 @@ MESSAGE_TAGS = {
 }
 # settings.py
 
-# Redirect users to /login/ by default if not logged in
-LOGIN_URL = '/login/'
 

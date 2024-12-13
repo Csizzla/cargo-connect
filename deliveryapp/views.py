@@ -1,7 +1,9 @@
-
-from django.shortcuts import render, redirect
+from idlelib.rpc import request_queue
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.hashers import check_password, make_password
-from deliveryapp.models import Contact, Member, Order
+from deliveryapp.models import Contact, Member, Order, Feedback
+from deliveryapp.forms import OrderForm
 from django.contrib import messages
 # Create your views here.
 
@@ -31,6 +33,7 @@ def services(request):
 def about(request):
     return render(request,'about.html')
 
+
 def quote(request):
     if request.method == "POST":
         orders=Order(
@@ -44,11 +47,20 @@ def quote(request):
             message = request.POST['message'],
         )
         orders.save()
-        print("Orders:", orders)
 
         return redirect('/quote')
     else:
         return render(request,'get-a-quote.html')
+
+def feedback(request):
+    if request.method == 'POST':
+        feedbacks=Feedback(
+            message=request.POST['message'],
+        )
+        feedbacks.save()
+        return redirect('/account')
+    else:
+        return render(request,'account.html')
 
 
 def contact(request):
@@ -64,31 +76,53 @@ def contact(request):
     else:
         return render(request,'contact.html')
 
-def accounts(request):
-    return render(request,'account.html')
-
 def register(request):
     if request.method == 'POST':
-        members = Member(
-            full_name=request.POST['full_name'],
-            email=request.POST['email'],
-            password=request.POST['password']
+
+        member = Member(
+            full_name = request.POST['full_name'],
+            email = request.POST['email'],
+            password = request.POST['password'],
         )
-        members.save()
+        member.save()
+
         return redirect('/login')
-    else:
-        return render(request,'register.html')
 
-def login(request):
-    return render(request,'login.html')
+    return render(request, 'register.html')
 
 
-def customer_dashboard(request):
-    # Assuming `members` is related to a user or customer
-      # Replace this based on your user model setup
-    customer = request.user  # Or another way to identify the logged-in customer
+
+
+
+def account(request):
     orders = Order.objects.all()
-    return render(request, "account.html", context = {"orders": orders,} )
 
 
-  # Add this in the view and check the console
+    return render(request,'account.html',{'orders':orders})
+
+
+def delete(request, id):
+    orders=Order.objects.get(id=id)
+    orders.delete()
+    return redirect('/account')
+
+def edit(request, id):
+    editorders = Order.objects.get(id=id)
+
+    return render(request,'edit.html',{'orders':editorders})
+
+def update(request,id):
+    updateinfo=Order.objects.get(id=id)
+    form=OrderForm(request.POST,instance=updateinfo)
+    if form.is_valid():
+        form.save()
+        return redirect('/account')
+    else:
+        return render(request,'edit.html')
+
+
+def accept(request):
+    orders = Order.objects.all()
+    return render(request, 'accounts.html',{'orders':orders})
+
+    
