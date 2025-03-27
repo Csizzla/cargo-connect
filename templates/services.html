@@ -51,14 +51,14 @@
       </a>
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="{% url 'index' %}">Home<br></a></li>
+          <li><a href="{% url 'home' %}">Home<br></a></li>
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'services' %}" class="active">Services</a></li>
           <li class="dropdown"><a href="#" ><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="{% url 'quote' %}">Place Order</a></li>
               <li><a href="{% url 'account' %}">Dashboard</a></li>
-              <li><a href="#">Track</a></li>
+              <li><a href="{% url 'track' %}">Track</a></li>
               <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
           </li>
@@ -214,200 +214,90 @@
     <!-- Features Section -->
     <section id="features" class="features section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span>Features</span>
-        <h2>Features</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+  <!-- Section Title -->
+  <div class="container section-title text-center" data-aos="fade-up">
+    <span>Our Services</span>
+    <h2>Why Choose Us?</h2>
+    <p>Experience reliable, efficient, and affordable delivery services tailored to your needs.</p>
+  </div><!-- End Section Title -->
 
-      <div class="container">
+  <div class="container">
 
-        <div class="row gy-4 align-items-center features-item">
-          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
-            <img src="{% static 'assets/img/features-1.jpg' %}" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="bi bi-check"></i><span> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check"></i> <span>Ullam est qui quos consequatur eos accusamus.</span></li>
-            </ul>
-          </div>
-        </div><!-- Features Item -->
-
-        <div class="row gy-4 align-items-center features-item">
-          <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="{% static 'assets/img/features-2.jpg' %}" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
-            <h3>Corporis temporibus maiores provident</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
-          </div>
-        </div><!-- Features Item -->
-
-        <div class="row gy-4 align-items-center features-item">
-          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
-            <img src="{% static 'assets/img/features-3.jpg' %}" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7" data-aos="fade-up">
-            <h3>Sunt consequatur ad ut est nulla consectetur reiciendis animi voluptas</h3>
-            <p>Cupiditate placeat cupiditate placeat est ipsam culpa. Delectus quia minima quod. Sunt saepe odit aut quia voluptatem hic voluptas dolor doloremque.</p>
-            <ul>
-              <li><i class="bi bi-check"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check"></i><span> Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check"></i> <span>Facilis ut et voluptatem aperiam. Autem soluta ad fugiat</span>.</li>
-            </ul>
-          </div>
-        </div><!-- Features Item -->
-
-        <div class="row gy-4 align-items-center features-item">
-          <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out">
-            <img src="{% static 'assets/img/features-4.jpg' %}" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up">
-            <h3>Quas et necessitatibus eaque impedit ipsum animi consequatur incidunt in</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
-          </div>
-        </div><!-- Features Item -->
-
+    <!-- Feature 1: Fast Delivery -->
+    <div class="row gy-4 align-items-center features-item">
+      <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
+        <img src="{% static 'assets/img/features-1.jpg' %}" class="img-fluid" alt="Fast Delivery">
       </div>
+      <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
+        <h3>Fast and Timely Deliveries</h3>
+        <p class="fst-italic">
+          Get your packages delivered swiftly and on time, no matter where you're shipping to.
+        </p>
+        <ul>
+          <li><i class="bi bi-check"></i> <span>Same-day and next-day delivery options available.</span></li>
+          <li><i class="bi bi-check"></i> <span>Real-time updates on delivery schedules.</span></li>
+          <li><i class="bi bi-check"></i> <span>Efficient logistics to minimize delays.</span></li>
+        </ul>
+      </div>
+    </div><!-- Features Item -->
 
-    </section><!-- /Features Section -->
+    <!-- Feature 2: Real-Time Tracking -->
+    <div class="row gy-4 align-items-center features-item">
+      <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+        <img src="{% static 'assets/img/features-4.jpg' %}" class="img-fluid" alt="Real-Time Tracking">
+      </div>
+      <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
+        <h3>Real-Time Package Tracking</h3>
+        <p class="fst-italic">
+          Stay informed every step of the way with our real-time tracking system.
+        </p>
+        <p>
+          Simply enter your tracking code to view your package's exact location and delivery status. Transparency and reliability at your fingertips.
+        </p>
+      </div>
+    </div><!-- Features Item -->
+
+    <!-- Feature 3: Affordable Rates -->
+    <div class="row gy-4 align-items-center features-item">
+      <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
+        <img src="{% static 'assets/img/features-3.jpg' %}" class="img-fluid" alt="Affordable Rates">
+      </div>
+      <div class="col-md-7" data-aos="fade-up">
+        <h3>Affordable and Transparent Pricing</h3>
+        <p>
+          Our competitive pricing ensures you get the best value for your money. No hidden charges—just simple, transparent rates.
+        </p>
+        <ul>
+          <li><i class="bi bi-check"></i> <span>Customizable delivery plans to suit your budget.</span></li>
+          <li><i class="bi bi-check"></i> <span>Discounts for bulk shipments and repeat customers.</span></li>
+          <li><i class="bi bi-check"></i> <span>Instant cost calculator for upfront pricing.</span></li>
+        </ul>
+      </div>
+    </div><!-- Features Item -->
+
+    <!-- Feature 4: 24/7 Customer Support -->
+    <div class="row gy-4 align-items-center features-item">
+      <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out">
+        <img src="{% static 'assets/img/features-2.jpg' %}" class="img-fluid" alt="Customer Support">
+      </div>
+      <div class="col-md-7 order-2 order-md-1" data-aos="fade-up">
+        <h3>24/7 Customer Support</h3>
+        <p class="fst-italic">
+          We're here to assist you anytime, anywhere. Your satisfaction is our top priority.
+        </p>
+        <p>
+          Have questions about your delivery? Our dedicated support team is ready to provide solutions, day or night.
+        </p>
+      </div>
+    </div><!-- Features Item -->
+
+  </div>
+
+</section>
+<!-- /Features Section -->
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section dark-background">
-
-      <img src="{% static 'assets/img/testimonials-bg.jpg' %}" class="testimonials-bg" alt="">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              }
-            }
-          </script>
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'assets/img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4></h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Your services are exceptional! The real-time tracking feature has been a game changer for our business logistics, ensuring transparency for our customers.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
-                <h3>Sara Wilson</h3>
-                <h4>Designer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fast and reliable service! I can always count on my packages being delivered without delays or damage.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'assets/img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Their warehousing and logistics solutions have simplified my supply chain. Highly recommended for e-commerce businesses.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'assets/img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>As a freelancer, timely delivery of my work materials is crucial. This service ensures everything arrives as planned, hassle-free.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'assets/img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>This delivery service has been instrumental in growing my business. Their logistics solutions are efficient and affordable.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-
-    </section><!-- /Testimonials Section -->
+    <!-- /Testimonials Section -->
 
     <!-- Faq Section -->
     <section id="faq" class="faq section">

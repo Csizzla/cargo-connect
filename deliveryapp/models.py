@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.hashers import make_password
 
 # Create your models here.
 
@@ -7,6 +8,10 @@ class Member(models.Model):
     full_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=255)  # Store hashed passwords
+
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.full_name
@@ -59,3 +64,15 @@ def get_active_orders(member):
 
 def get_completed_orders(member):
     return Order.objects.filter(member=member, status="Completed")
+
+from django.db import models
+
+class Driver(models.Model):
+    name = models.CharField(max_length=100)
+    license_number = models.CharField(max_length=50, unique=True)
+    phone_number = models.CharField(max_length=15)
+    vehicle_type = models.CharField(max_length=50)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name

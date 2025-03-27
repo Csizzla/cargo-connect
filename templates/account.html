@@ -60,7 +60,7 @@
             <ul>
               <li><a href="{% url 'quote' %}">Place Order</a></li>
               <li><a href="{% url 'account' %}">Dashboard</a></li>
-              <li><a href="#">Track</a></li>
+              <li><a href="{% url 'track' %}">Track</a></li>
               <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
           </li>
@@ -84,7 +84,7 @@
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">Starter Page</li>
+            <li class="current">Orders</li>
           </ol>
         </nav>
       </div>
@@ -148,8 +148,8 @@
       <td>{{ order.price|default:"N/A" }}</td>
       <td>
           <a href="/accounts/" class="btn btn-outline-primary">ACCEPT</a>
-          <a href="/delete/{{ order.id }}" class="btn btn-outline-primary">CANCEL</a>
-          <a href="/edit/{{ order.id }}" class="btn btn-outline-primary">EDIT</a>
+          <a href="/delete/{{ order.id }}" class="btn btn-outline-danger">CANCEL</a>
+          <a href="/edit/{{ order.id }}" class="btn btn-outline-success">EDIT</a>
       </td>
     </tr>
     {% empty %}
@@ -161,21 +161,28 @@
 </table>
 
 
-    <!-- Support Section -->
-    <div class="row mt-4">
-      <div class="col-md-6">
-        <h2 class="text-primary">Support</h2>
-        <form method="POST" action="">
-          {% csrf_token %}
-          <div class="mb-3">
-            <label for="feedback" class="form-label">Submit your feedback:</label>
-            <textarea class="form-control" id="feedback" name="feedback" rows="4" placeholder="Your feedback..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-outline-warning">Submit Feedback</button>
-        </form>
-      </div>
-    </div>
 
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="message" class="form-label">Your Feedback</label>
+            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+    </form>
+</div><br><br>
+
+
+
+    <!-- Support Section -->
 
   </main>
 

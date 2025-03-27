@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.hashers import check_password, make_password
 from deliveryapp.models import Contact, Member, Order, Feedback
-from deliveryapp.forms import OrderForm
+from deliveryapp.forms import OrderForm, DeliverySearchForm
 from django.contrib import messages
 # Create your views here.
 
@@ -20,7 +20,8 @@ def index(request):
     else:
         return render(request, 'login.html')
 
-
+def home(request):
+    return render(request, 'index.html')
 def service(request):
     return render(request,'service-details.html')
 
@@ -48,19 +49,25 @@ def quote(request):
         )
         orders.save()
 
-        return redirect('/quote')
+        return redirect('/account')
     else:
         return render(request,'get-a-quote.html')
 
 def feedback(request):
     if request.method == 'POST':
-        feedbacks=Feedback(
-            message=request.POST['message'],
-        )
-        feedbacks.save()
-        return redirect('/account')
-    else:
-        return render(request,'account.html')
+        try:
+            name = request.POST['name']
+            message = request.POST['message']
+
+            feedback_entry = Feedback(name=name, message=message)
+            feedback_entry.save()
+            return redirect('/account')
+
+        except KeyError as e:
+            print(f"Missing field: {e}")  # Debugging
+            return render(request, 'account.html', {'error': 'All fields are required'})
+
+    return render(request, 'account.html')
 
 
 def contact(request):
@@ -112,17 +119,39 @@ def edit(request, id):
     return render(request,'edit.html',{'orders':editorders})
 
 def update(request,id):
-    updateinfo=Order.objects.get(id=id)
-    form=OrderForm(request.POST,instance=updateinfo)
-    if form.is_valid():
-        form.save()
+    orders = Order.objects.get(id=id,)
+
+    if request.method == 'POST':
+        orders.departure_city = request.POST['departure']
+        orders.delivery_city = request.POST['delivery']
+        orders.weight = request.POST['weight']
+        orders.dimensions = request.POST['dimensions']
+        orders.name = request.POST['name']
+        orders.email = request.POST['email']
+        orders.phone = request.POST['phone']
+        orders.message = request.POST['message']
+
+
+        orders.save()
         return redirect('/account')
     else:
-        return render(request,'edit.html')
-
+        return render(request,'edit.html',{ 'orders':orders})
 
 def accept(request):
     orders = Order.objects.all()
     return render(request, 'accounts.html',{'orders':orders})
 
-    
+
+def track(request):
+    form = DeliverySearchForm()
+    orders = None
+
+    if request.method == 'POST':
+        form = DeliverySearchForm(request.POST)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            # Search for orders based on city or zip code
+            orders = Order.objects.filter(departure_city__icontains=query) | Order.objects.filter(
+                delivery_city__icontains=query)
+
+    return render(request, 'track.html', {'form': form, 'orders': orders})

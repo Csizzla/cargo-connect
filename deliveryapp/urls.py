@@ -6,6 +6,7 @@ from deliveryapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index, name='index'),
+    path('home/', views.home, name='home'),
     path('starter/', views.starter, name='starter'),
     path('service/', views.service, name='service'),
     path('services/', views.services, name='services'),
@@ -16,8 +17,10 @@ urlpatterns = [
     path('login/', views.index, name='login'),
     path('account/', views.account, name='account'),
     path('accounts/', views.accept, name='accounts'),
+    path('track/', views.track, name='track'),
     path('delete/<int:id>', views.delete),
     path('edit/<int:id>', views.edit, name='edit'),
+    path('update/<int:id>', views.update, name='update')
 
 
 

@@ -4,14 +4,15 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Contact - cargo deliveries</title>
+  <title>Orders</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
+
 
     {% load static %}
 
   <!-- Favicons -->
-  <link href="{% static 'assets/img/logo/4517971.png' %}" rel="icon">
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
   <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -39,7 +40,7 @@
   ======================================================== -->
 </head>
 
-<body class="contact-page">
+<body class="starter-page-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
@@ -58,7 +59,7 @@
             <ul>
               <li><a href="{% url 'quote' %}">Place Order</a></li>
               <li><a href="{% url 'account' %}">Dashboard</a></li>
-              <li><a href="{% url 'track' %}">Track</a></li>
+              <li><a href="#">Track</a></li>
               <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
           </li>
@@ -71,107 +72,52 @@
       <a class="btn-getstarted" href="{% url 'quote' %}">Place Order</a>
 
     </div>
-
   </header>
 
   <main class="main">
 
     <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/page-title-bg.jpg);">
+    <div class="page-title dark-background" data-aos="fade" style="background-image: url({% static 'assets/img/page-title-bg.jpg' %});">
       <div class="container position-relative">
-        <h1>Contact</h1>
-        <p>We’re here to assist you! Whether you have questions, need support, or want to provide feedback, our team is ready to help</p>
+        <h1>Track your Goods</h1>
+        <p></p>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">Contact</li>
+            <li class="current">Track</li>
           </ol>
         </nav>
       </div>
     </div><!-- End Page Title -->
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
+    <!-- Starter Section Section -->
+    <section id="starter-section" class="starter-section section">
+<h2 class="text-center mb-4">Check Order Status</h2>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+<form action="{% url 'track' %}" method="POST" class="form-search d-flex align-items-center justify-content-between mb-4 p-3 border rounded shadow-sm" data-aos="fade-up" data-aos-delay="200">
+    {% csrf_token %}
+    <input type="text" class="form-control me-2" name="query" placeholder="Your ZIP code or City. e.g. New York" required>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
 
-        <iframe
-                style="border:0; width: 100%; height: 270px;"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.0592801577762!2d36.8219463!3d-1.2920658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x183f1733a3e231ed%3A0xa04f24f14c45d6e6!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus"
-                frameborder="0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
+{% if orders %}
+    <h3 class="mb-3">Order Statuses:</h3>
+    <ul class="list-group">
+        {% for order in orders %}
+            <li class="list-group-item">
+                <strong>Order #{{ order.id }}</strong><br>
+                <span><strong>Departure:</strong> {{ order.departure_city }}</span><br>
+                <span><strong>Delivery:</strong> {{ order.delivery_city }}</span><br>
+                <span><strong>Status:</strong> <span class="badge bg-primary">{{ order.status }}</span></span>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No orders found for the given ZIP code or city.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
-        </iframe><!-- End Google Maps -->
 
-        <div class="row gy-4">
-
-          <div class="col-lg-4">
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h3>Address</h3>
-                <p>A108 Adam Street, Nairobi, N 5022</p>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3>Call Us</h3>
-                <p>+254 746327876</p>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
-              <i class="bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h3>Email Us</h3>
-                <p>cargodeliveries@example.com</p>
-              </div>
-            </div><!-- End Info Item -->
-
-          </div>
-
-          <div class="col-lg-8">
-            <form  method="POST" >
-                {% csrf_token %}
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Contact Section -->
+    </section><!-- /Starter Section Section -->
 
   </main>
 
